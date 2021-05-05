@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @author: Ivan Arriola <admin@autodidactati.com>
+-->
+<odoo>
+    <record model="ir.ui.view" id="sale_order_view_inherit_customer_addres_so">
+        <field name="name">sale.order.view.inherit.customer.addres.so</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="customer_addres"/>
+                <field name="customer_city"/>
+                <field name="customer_state"/>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="replace">
+                <field name="partner_id" domain="[('customer','=',True)]" context="{'search_default_customer':1, 'show_address': 0}" options="{&quot;always_reload&quot;: True}"/>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
+
