@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+	<record model="ir.ui.view" id="ati_control_existente_view_form">
+		<field name="name">ati.control.existente.view.form</field>
+		<field name="model">ati.control.existente</field>
+		<field name="arch" type="xml">
+			<form string="Archivo de stock">
+				<header>
+					<button name="btn_process" type="object" string="Procesar" states="draft" />
+					<field name="state" widget="statusbar" />
+				</header>
+				<sheet>
+					<group>
+						<field name="name" />
+						<field name="product_file" widget="binary"/>
+						<field name="delimiter" />
+						<field name="skip_first_line" />
+						<field name="product_match" />
+					</group>
+					<notebook>
+						<page string="Contenidos" >
+							<field name="file_content" readonly="1"/>
+						</page>
+                        <page string="Articulos Procesados">
+                                <field name="productos_existentes" readonly="1"/>
+                        </page>
+						<page string="No procesados">
+							<field name="not_processed_content" readonly="1"/>
+						</page>
+                        <page string="Articulos en Stock">
+                            <field name="productos_en_stock" readonly="1"/>
+                        </page>
+                        <page string="Articulos sin Stock">
+                            <field name="productos_fuera_stock" readonly="1"/>
+                        </page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<record model="ir.ui.view" id="ati_control_existente_tree">
+		<field name="name">ati.control.existente.view.tree</field>
+		<field name="model">ati.control.existente</field>
+		<field name="arch" type="xml">
+		<tree string="Planta">
+			<field name="name" />
+			<field name="product_file" />
+			<field name="state" />
+		</tree>
+		</field>
+	</record>
+
+	<record model="ir.actions.act_window" id="action_ati_control_existente">
+		<field name="name">Consultor de stock</field>
+		<field name="res_model">ati.control.existente</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+
+	<menuitem name="Consultor de stock" id="ati_control_existente_menu"
+		parent="point_of_sale.pos_config_menu_catalog"
+		action="action_ati_control_existente"
+		sequence="100"/>
+
+</odoo>
