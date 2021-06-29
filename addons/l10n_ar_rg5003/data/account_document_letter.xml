@@ -15,7 +15,7 @@
     <record id="l10n_ar_account.dl_a" model="account.document.letter">
         <field name='name'>A</field>
         <field name='issuer_ids' eval="[(6, 0, [ref('l10n_ar_account.res_IVARI')])]"/>
-        <field name='receptor_ids' eval="[(6, 0, [ref('l10n_ar_account.res_IVARNI'), ref('l10n_ar_account.res_IVARI'), ref('l10n_ar_account.es_RM'), ref('l10n_ar_account.res_MON_SOCIAL'), ref('l10n_ar_account.res_IVARIFM')])]"/>
+        <field name='receptor_ids' eval="[(6, 0, [ref('l10n_ar_account.res_IVARNI'), ref('l10n_ar_account.res_IVARI'), ref('l10n_ar_account.res_RM'), ref('l10n_ar_account.res_MON_SOCIAL'), ref('l10n_ar_account.res_IVARIFM')])]"/>
     </record>
 
     <!-- se setea nuevamente noupdate a true -->
