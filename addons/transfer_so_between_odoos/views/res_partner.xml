@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @author: Ivan Arriola <admin@autodidactati.com>
+-->
+<odoo>
+    <record model="ir.ui.view" id="res_partner_view_inherit_transfer_odoo">
+        <field name="name">res.partner.view.inherit.transfer.odoo</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[2]" position="after">
+                <page name="transfer_so_between_odoos" string="Info Odoo">
+                    <group>
+                        <field name="url_odoo"/>
+                        <field name="port_odoo"/>
+                        <field name="db_name_odoo"/>
+                        <field name="user_odoo"/>
+                        <field name="passw_odoo" password="True"/>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

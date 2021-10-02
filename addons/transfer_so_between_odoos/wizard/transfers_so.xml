@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+
+        <record id="transfers_so_view" model="ir.ui.view">
+            <field name="name">ati.transfers.so.form</field>
+            <field name="model">ati.transfers.so</field>
+            <field name="arch" type="xml">
+                <form string="Transferir SO">
+                    <p class="oe_grey">
+                        Se Trasnferiran las Ordenes de ventas a los respectivos Odoo de cada cliente
+                    </p>
+                    <footer>
+                        <button string="Confirmar" name="transfer" type="object" default_focus="1" class="btn-primary"/>
+                        <button string="Cancelar" class="btn-default" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_transfers_so"
+            multi="True"
+            key2="client_action_multi" name="Transferir SO"
+            view_id="transfers_so_view"
+            res_model="ati.transfers.so" src_model="sale.order"
+            view_mode="form" target="new" view_type="form" />
+
+    </data>
+</odoo>
