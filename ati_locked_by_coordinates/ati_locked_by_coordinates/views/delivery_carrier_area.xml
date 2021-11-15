@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_delivery_carrier_area_form" model="ir.ui.view">
+        <field name="name">view.delivery.carrier.area.form</field>
+        <field name="model">delivery.carrier.area</field>
+        <field name="arch" type="xml">
+            <form string="Area">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="shape_name" required="1" placeholder="Nombre"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="delivery_carrier_id"/>
+                        </group>
+                        <group>
+                            <field name="shape_type" invisible="1"/>
+                            <field name="shape_area" attrs="{'invisible':[('shape_type', '=', 'circle')]}"/>
+                            <field name="shape_radius" attrs="{'invisible':[('shape_type', '!=', 'circle')]}"/>
+                        </group>
+                    </group>
+                    <field name="shape_description" placeholder="Description"/>
+                    <separator/>
+                    <field name="shape_paths" widget="map_drawing_shape"/>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_delivery_carrier_area_tree" model="ir.ui.view">
+        <field name="name">view.delivery.carrier.area.tree</field>
+        <field name="model">delivery.carrier.area</field>
+        <field name="arch" type="xml">
+            <tree string="Areas">
+                <field name="delivery_carrier_id" string="Metodo de envio"/>
+                <field name="shape_name" string="Nombre"/>
+                <field name="shape_type" string="Tipo"/>
+                <field name="shape_area" string="Area"/>
+                <field name="shape_radius" string="Radio"/>
+                <field name="shape_description" string="Descripcion"/>
+            </tree>
+        </field>
+    </record>
+    <record id="action_delivery_carrier_area" model="ir.actions.act_window">
+        <field name="name">Areas Restringidas</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">delivery.carrier.area</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_carrier_area" string="Carrier Area" action="action_delivery_carrier_area" parent="website_sale.menu_ecommerce_settings"/>
+
+</odoo>

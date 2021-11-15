@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="map_view_delivery" name="Map View Delivery" inherit_id="website_sale.payment">
+
+        <xpath expr="//div[@class='card']" position="replace">
+            <div class="card">
+                <div class="card-body" id="shipping_and_billing">
+                    <a class="float-right no-decoration" href="/shop/checkout"><i class="fa fa-edit"/> Edit</a>
+                    <t t-set="same_shipping" t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>
+                    <div><b>Facturacion<t t-if="same_shipping and not only_services"> &amp; Direccion</t>: </b><span t-esc="order.partner_shipping_id.direccion_completa" class="address-inline"/></div>
+                    <div t-if="not same_shipping and not only_services" groups="sale.group_delivery_invoice_address"><b>Direccion: </b><span t-esc="order.partner_shipping_id" t-options="dict(widget='contact', fields=['address'], no_marker=True, separator=', ')" class="address-inline"/></div>
+                </div>
+                <div style="text-align:center;">
+                  <h3>Tu ubicación segun tu direccion indicada</h3>
+                  <iframe
+                    width="600"
+                    id="custom_src"
+                    src=""
+                    height="450"
+                  
+                    frameborder="0" style="border:0">
+                  
+                  </iframe>
+                </div>
+                <script>
+                  if(document.getElementsByClassName("address-inline")[0].innerText){
+                     var value= document.getElementsByClassName("address-inline")[0].innerText;
+                     document.getElementById("custom_src").src="https://www.google.com/maps/embed/v1/place?key=YOUR-KEY&amp;q="+value+"&amp;attribution_source=Google+Maps+Embed+API&amp;attribution_web_url=https://rg.autodidactati.com/";}
+                </script>
+            </div>
+        </xpath>
+
+    </template>
+
+</odoo>
