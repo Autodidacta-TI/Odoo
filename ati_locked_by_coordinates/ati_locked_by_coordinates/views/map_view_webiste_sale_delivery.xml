@@ -26,7 +26,7 @@
                 <script>
                   if(document.getElementsByClassName("address-inline")[0].innerText){
                      var value= document.getElementsByClassName("address-inline")[0].innerText;
-                     document.getElementById("custom_src").src="https://www.google.com/maps/embed/v1/place?key=YOUR-KEY&amp;q="+value+"&amp;attribution_source=Google+Maps+Embed+API&amp;attribution_web_url=https://rg.autodidactati.com/";}
+                     document.getElementById("custom_src").src="https://www.google.com/maps/embed/v1/place?key=YOUR-KEY&amp;q="+value+"&amp;attribution_source=Google+Maps+Embed+API&amp;attribution_web_url=https://YOUR-WEB/";}
                 </script>
             </div>
         </xpath>
